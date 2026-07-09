@@ -1,9 +1,0 @@
-{
-  "name": "Walkman Player",
-  "short_name": "Walkman",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#070707",
-  "theme_color": "#070707",
-  "icons": []
-}
