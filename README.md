@@ -1,33 +1,16 @@
-# Walkman Player
+# Walkman Player V2
 
-Interactive 3D Walkman Music Player
+Interaktiver Walkman Musikplayer mit MP3-Playlist, Cover, Visualizer, responsivem Retro-Design und GitHub-Pages-Unterstützung.
 
-## Description
+## Test lokal
+Öffne den Ordner in VS Code und starte `index.html` mit Live Server.
 
-A modern, interactive 3D music player application inspired by the classic Walkman devices.
+## GitHub Pages
+Repository hochladen → Settings → Pages → Deploy from branch → main / root.
 
-## Features
-
-- Interactive 3D visualization
-- Music playback controls
-- Walkman-style interface design
-
-## Installation
-
-```bash
-npm install
-```
-
-## Usage
-
-```bash
-npm start
-```
-
-## License
-
-MIT
-
-## Author
-
-philippikalipa-lipa
+## Tastatur
+Space = Play/Pause  
+P = Playlist  
+M = Mute  
+Pfeile links/rechts = Previous/Next  
+Pfeile hoch/runter = Lautstärke
