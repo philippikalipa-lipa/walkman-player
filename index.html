@@ -1,89 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#070707">
-  <meta name="description" content="Interaktiver Walkman Musikplayer">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Walkman Player - interaktiver Musikplayer" />
+  <meta name="theme-color" content="#070707" />
   <title>Walkman Player</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
-  <div class="bg"></div>
   <header class="header">
-    <h1>Walkman Player</h1>
-    <div class="status" id="statusText">Ready</div>
+    <div class="container"><h1 class="logo">Walkman Player</h1></div>
   </header>
 
   <main class="app">
-    <section class="walkman-stage" aria-label="Interaktiver Walkman">
-      <div class="walkman" id="walkman">
-        <div class="headphone-arc"></div>
-        <div class="cable"></div>
-        <div class="walkman-body">
-          <div class="top-row">
-            <button class="yellow-btn" id="wmRecord" type="button" title="Record"></button>
-            <div class="jack"></div>
-            <div class="led" id="led"></div>
-          </div>
-          <div class="brand">SONY</div>
-          <button class="cassette-door" id="cassetteDoor" type="button" aria-label="Playlist öffnen">
-            <span class="reel reel-left" id="reelLeft"></span>
-            <span class="window"></span>
-            <span class="reel reel-right" id="reelRight"></span>
-          </button>
-          <div class="arrow">↑</div>
-          <div class="walkman-logo">WALKMAN</div>
-        </div>
-        <div class="side-panel">
-          <button id="wmPlay" type="button">▶</button>
-          <button id="wmPause" type="button">⏸</button>
-          <button id="wmStop" type="button">⏹</button>
-          <button id="wmPrev" type="button">⏪</button>
-          <button id="wmNext" type="button">⏩</button>
-          <label class="side-volume">VOL <input id="wmVolume" type="range" min="0" max="1" step="0.01" value="0.9"></label>
-        </div>
-        <div class="headphone"></div>
-      </div>
-      <div class="stage-tools">
-        <button id="togglePlaylistBtn" type="button">Playlist</button>
+    <section class="viewer-section">
+      <div class="viewer-wrapper">
+        <model-viewer id="walkmanViewer" src="assets/models/walkman.glb" alt="3D Walkman" camera-controls touch-action="pan-y" shadow-intensity="1.2" exposure="1" environment-image="neutral" loading="eager"></model-viewer>
+        <div class="model-fallback">3D-Modell optional: assets/models/walkman.glb</div>
         <button id="fullscreenBtn" type="button">Vollbild</button>
       </div>
     </section>
 
-    <section class="player-panel">
-      <figure class="cover-wrap"><img id="coverImage" src="assets/images/SCHICKSALS.jpeg" alt="Album Cover"></figure>
-      <div class="track-meta">
-        <h2 id="trackTitle">Black is back</h2>
-        <p id="trackArtist">Phil Osophski</p>
-      </div>
+    <section class="player-section">
+      <figure class="album-cover"><img id="coverImage" src="assets/images/SCHICKSALS.jpeg" alt="Albumcover" /></figure>
+      <h2 id="trackTitle">Black is back</h2>
+      <p id="trackArtist">Phil Osophski</p>
+
       <div class="time-row"><span id="currentTime">00:00</span><span id="duration">00:00</span></div>
-      <input id="progressBar" type="range" min="0" max="100" step="0.01" value="0" aria-label="Fortschritt">
-      <div class="controls">
+      <input id="progressBar" type="range" min="0" max="100" value="0" step="0.01" aria-label="Fortschritt" />
+
+      <section class="controls-section" aria-label="Playersteuerung">
         <button id="previousBtn" type="button">⏮</button>
-        <button id="playBtn" type="button" class="primary">▶</button>
+        <button id="playBtn" type="button">▶</button>
         <button id="pauseBtn" type="button">⏸</button>
         <button id="stopBtn" type="button">⏹</button>
         <button id="nextBtn" type="button">⏭</button>
         <button id="shuffleBtn" type="button">Shuffle</button>
         <button id="repeatBtn" type="button">Repeat</button>
-      </div>
-      <div class="volume-row">
-        <label for="volumeSlider">Volume</label>
-        <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.9">
-        <button id="muteBtn" type="button">Mute</button>
-      </div>
-      <canvas id="visualizerCanvas" aria-label="Audio Visualizer"></canvas>
-    </section>
+      </section>
 
-    <aside class="playlist-panel" id="playlistPanel">
-      <div class="playlist-head"><h3>Playlist</h3><button id="closePlaylistBtn" type="button">×</button></div>
-      <ol id="playlist"></ol>
-    </aside>
+      <section class="volume-section">
+        <label for="volumeSlider">Lautstärke</label>
+        <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.9" />
+        <button id="muteBtn" type="button">Mute</button>
+      </section>
+
+      <section class="playlist-section">
+        <h3>Playlist</h3>
+        <ol id="playlist"></ol>
+      </section>
+
+      <section class="visualizer-section"><canvas id="visualizerCanvas"></canvas></section>
+    </section>
   </main>
 
+  <footer><small>Walkman Player · Version 1.0.0</small></footer>
   <audio id="audioPlayer" preload="metadata"></audio>
+
+  <script src="js/audio.js"></script>
+  <script src="js/playlist.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/walkman.js"></script>
+  <script src="js/player.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
