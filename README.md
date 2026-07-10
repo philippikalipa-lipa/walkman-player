@@ -1,16 +1,7 @@
-# Walkman Player V2
+# Walkman Player
 
-Interaktiver Walkman Musikplayer mit MP3-Playlist, Cover, Visualizer, responsivem Retro-Design und GitHub-Pages-Unterstützung.
+Testen lokal: `index.html` mit VS Code Live Server öffnen.
 
-## Test lokal
-Öffne den Ordner in VS Code und starte `index.html` mit Live Server.
+GitHub Pages: Repository Settings → Pages → Deploy from branch → main / root.
 
-## GitHub Pages
-Repository hochladen → Settings → Pages → Deploy from branch → main / root.
-
-## Tastatur
-Space = Play/Pause  
-P = Playlist  
-M = Mute  
-Pfeile links/rechts = Previous/Next  
-Pfeile hoch/runter = Lautstärke
+Optional: `assets/models/walkman.glb` aus Tripo AI einfügen.
